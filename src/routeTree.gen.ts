@@ -9,50 +9,330 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as IndexRouteImport } from './routes/index'
+import { Route as MainRouteImport } from './routes/_main'
+import { Route as ForgotPasswordRouteImport } from './routes/forgot-password'
+import { Route as LoginRouteImport } from './routes/login'
+import { Route as RegisterRouteImport } from './routes/register'
+import { Route as MainIndexRouteImport } from './routes/_main.index'
+import { Route as MainAccountsRouteImport } from './routes/_main.accounts'
+import { Route as MainBudgetsRouteImport } from './routes/_main.budgets'
+import { Route as MainCategoriesRouteImport } from './routes/_main.categories'
+import { Route as MainDebtsRouteImport } from './routes/_main.debts'
+import { Route as MainProfileRouteImport } from './routes/_main.profile'
+import { Route as MainReportsRouteImport } from './routes/_main.reports'
+import { Route as MainSettingsRouteImport } from './routes/_main.settings'
+import { Route as MainTransactionsIndexRouteImport } from './routes/_main.transactions.index'
+import { Route as MainTransactionsNewRouteImport } from './routes/_main.transactions.new'
 
-const IndexRoute = IndexRouteImport.update({
+const MainRoute = MainRouteImport.update({
+  id: '/_main',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ForgotPasswordRoute = ForgotPasswordRouteImport.update({
+  id: '/forgot-password',
+  path: '/forgot-password',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RegisterRoute = RegisterRouteImport.update({
+  id: '/register',
+  path: '/register',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MainIndexRoute = MainIndexRouteImport.update({
   id: '/',
   path: '/',
-  getParentRoute: () => rootRouteImport,
+  getParentRoute: () => MainRoute,
+} as any)
+const MainAccountsRoute = MainAccountsRouteImport.update({
+  id: '/accounts',
+  path: '/accounts',
+  getParentRoute: () => MainRoute,
+} as any)
+const MainBudgetsRoute = MainBudgetsRouteImport.update({
+  id: '/budgets',
+  path: '/budgets',
+  getParentRoute: () => MainRoute,
+} as any)
+const MainCategoriesRoute = MainCategoriesRouteImport.update({
+  id: '/categories',
+  path: '/categories',
+  getParentRoute: () => MainRoute,
+} as any)
+const MainDebtsRoute = MainDebtsRouteImport.update({
+  id: '/debts',
+  path: '/debts',
+  getParentRoute: () => MainRoute,
+} as any)
+const MainProfileRoute = MainProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => MainRoute,
+} as any)
+const MainReportsRoute = MainReportsRouteImport.update({
+  id: '/reports',
+  path: '/reports',
+  getParentRoute: () => MainRoute,
+} as any)
+const MainSettingsRoute = MainSettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => MainRoute,
+} as any)
+const MainTransactionsIndexRoute = MainTransactionsIndexRouteImport.update({
+  id: '/transactions/',
+  path: '/transactions/',
+  getParentRoute: () => MainRoute,
+} as any)
+const MainTransactionsNewRoute = MainTransactionsNewRouteImport.update({
+  id: '/transactions/new',
+  path: '/transactions/new',
+  getParentRoute: () => MainRoute,
 } as any)
 
 export interface FileRoutesByFullPath {
-  '/': typeof IndexRoute
+  '/': typeof MainIndexRoute
+  '/forgot-password': typeof ForgotPasswordRoute
+  '/login': typeof LoginRoute
+  '/register': typeof RegisterRoute
+  '/accounts': typeof MainAccountsRoute
+  '/budgets': typeof MainBudgetsRoute
+  '/categories': typeof MainCategoriesRoute
+  '/debts': typeof MainDebtsRoute
+  '/profile': typeof MainProfileRoute
+  '/reports': typeof MainReportsRoute
+  '/settings': typeof MainSettingsRoute
+  '/transactions/new': typeof MainTransactionsNewRoute
+  '/transactions/': typeof MainTransactionsIndexRoute
 }
 export interface FileRoutesByTo {
-  '/': typeof IndexRoute
+  '/forgot-password': typeof ForgotPasswordRoute
+  '/login': typeof LoginRoute
+  '/register': typeof RegisterRoute
+  '/accounts': typeof MainAccountsRoute
+  '/budgets': typeof MainBudgetsRoute
+  '/categories': typeof MainCategoriesRoute
+  '/debts': typeof MainDebtsRoute
+  '/profile': typeof MainProfileRoute
+  '/reports': typeof MainReportsRoute
+  '/settings': typeof MainSettingsRoute
+  '/': typeof MainIndexRoute
+  '/transactions/new': typeof MainTransactionsNewRoute
+  '/transactions': typeof MainTransactionsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
-  '/': typeof IndexRoute
+  '/_main': typeof MainRouteWithChildren
+  '/forgot-password': typeof ForgotPasswordRoute
+  '/login': typeof LoginRoute
+  '/register': typeof RegisterRoute
+  '/_main/accounts': typeof MainAccountsRoute
+  '/_main/budgets': typeof MainBudgetsRoute
+  '/_main/categories': typeof MainCategoriesRoute
+  '/_main/debts': typeof MainDebtsRoute
+  '/_main/profile': typeof MainProfileRoute
+  '/_main/reports': typeof MainReportsRoute
+  '/_main/settings': typeof MainSettingsRoute
+  '/_main/': typeof MainIndexRoute
+  '/_main/transactions/new': typeof MainTransactionsNewRoute
+  '/_main/transactions/': typeof MainTransactionsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/forgot-password'
+    | '/login'
+    | '/register'
+    | '/accounts'
+    | '/budgets'
+    | '/categories'
+    | '/debts'
+    | '/profile'
+    | '/reports'
+    | '/settings'
+    | '/transactions/new'
+    | '/transactions/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/forgot-password'
+    | '/login'
+    | '/register'
+    | '/accounts'
+    | '/budgets'
+    | '/categories'
+    | '/debts'
+    | '/profile'
+    | '/reports'
+    | '/settings'
+    | '/'
+    | '/transactions/new'
+    | '/transactions'
+  id:
+    | '__root__'
+    | '/_main'
+    | '/forgot-password'
+    | '/login'
+    | '/register'
+    | '/_main/accounts'
+    | '/_main/budgets'
+    | '/_main/categories'
+    | '/_main/debts'
+    | '/_main/profile'
+    | '/_main/reports'
+    | '/_main/settings'
+    | '/_main/'
+    | '/_main/transactions/new'
+    | '/_main/transactions/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
-  IndexRoute: typeof IndexRoute
+  MainRoute: typeof MainRouteWithChildren
+  ForgotPasswordRoute: typeof ForgotPasswordRoute
+  LoginRoute: typeof LoginRoute
+  RegisterRoute: typeof RegisterRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/': {
-      id: '/'
+    '/_main': {
+      id: '/_main'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof MainRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/forgot-password': {
+      id: '/forgot-password'
+      path: '/forgot-password'
+      fullPath: '/forgot-password'
+      preLoaderRoute: typeof ForgotPasswordRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/register': {
+      id: '/register'
+      path: '/register'
+      fullPath: '/register'
+      preLoaderRoute: typeof RegisterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_main/': {
+      id: '/_main/'
       path: '/'
       fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
-      parentRoute: typeof rootRouteImport
+      preLoaderRoute: typeof MainIndexRouteImport
+      parentRoute: typeof MainRoute
+    }
+    '/_main/accounts': {
+      id: '/_main/accounts'
+      path: '/accounts'
+      fullPath: '/accounts'
+      preLoaderRoute: typeof MainAccountsRouteImport
+      parentRoute: typeof MainRoute
+    }
+    '/_main/budgets': {
+      id: '/_main/budgets'
+      path: '/budgets'
+      fullPath: '/budgets'
+      preLoaderRoute: typeof MainBudgetsRouteImport
+      parentRoute: typeof MainRoute
+    }
+    '/_main/categories': {
+      id: '/_main/categories'
+      path: '/categories'
+      fullPath: '/categories'
+      preLoaderRoute: typeof MainCategoriesRouteImport
+      parentRoute: typeof MainRoute
+    }
+    '/_main/debts': {
+      id: '/_main/debts'
+      path: '/debts'
+      fullPath: '/debts'
+      preLoaderRoute: typeof MainDebtsRouteImport
+      parentRoute: typeof MainRoute
+    }
+    '/_main/profile': {
+      id: '/_main/profile'
+      path: '/profile'
+      fullPath: '/profile'
+      preLoaderRoute: typeof MainProfileRouteImport
+      parentRoute: typeof MainRoute
+    }
+    '/_main/reports': {
+      id: '/_main/reports'
+      path: '/reports'
+      fullPath: '/reports'
+      preLoaderRoute: typeof MainReportsRouteImport
+      parentRoute: typeof MainRoute
+    }
+    '/_main/settings': {
+      id: '/_main/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof MainSettingsRouteImport
+      parentRoute: typeof MainRoute
+    }
+    '/_main/transactions/': {
+      id: '/_main/transactions/'
+      path: '/transactions'
+      fullPath: '/transactions/'
+      preLoaderRoute: typeof MainTransactionsIndexRouteImport
+      parentRoute: typeof MainRoute
+    }
+    '/_main/transactions/new': {
+      id: '/_main/transactions/new'
+      path: '/transactions/new'
+      fullPath: '/transactions/new'
+      preLoaderRoute: typeof MainTransactionsNewRouteImport
+      parentRoute: typeof MainRoute
     }
   }
 }
 
+interface MainRouteChildren {
+  MainAccountsRoute: typeof MainAccountsRoute
+  MainBudgetsRoute: typeof MainBudgetsRoute
+  MainCategoriesRoute: typeof MainCategoriesRoute
+  MainDebtsRoute: typeof MainDebtsRoute
+  MainProfileRoute: typeof MainProfileRoute
+  MainReportsRoute: typeof MainReportsRoute
+  MainSettingsRoute: typeof MainSettingsRoute
+  MainIndexRoute: typeof MainIndexRoute
+  MainTransactionsNewRoute: typeof MainTransactionsNewRoute
+  MainTransactionsIndexRoute: typeof MainTransactionsIndexRoute
+}
+
+const MainRouteChildren: MainRouteChildren = {
+  MainAccountsRoute: MainAccountsRoute,
+  MainBudgetsRoute: MainBudgetsRoute,
+  MainCategoriesRoute: MainCategoriesRoute,
+  MainDebtsRoute: MainDebtsRoute,
+  MainProfileRoute: MainProfileRoute,
+  MainReportsRoute: MainReportsRoute,
+  MainSettingsRoute: MainSettingsRoute,
+  MainIndexRoute: MainIndexRoute,
+  MainTransactionsNewRoute: MainTransactionsNewRoute,
+  MainTransactionsIndexRoute: MainTransactionsIndexRoute,
+}
+
+const MainRouteWithChildren = MainRoute._addFileChildren(MainRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
-  IndexRoute: IndexRoute,
+  MainRoute: MainRouteWithChildren,
+  ForgotPasswordRoute: ForgotPasswordRoute,
+  LoginRoute: LoginRoute,
+  RegisterRoute: RegisterRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
